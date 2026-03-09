@@ -5,882 +5,220 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NexaTech Consulting | IT Strategy, Managed IT &amp; Cybersecurity</title>
   <meta name="description" content="Expert IT consulting for growing businesses. IT strategy, managed IT services, cybersecurity, cloud solutions, and digital transformation." />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    /* ── VARIABLES ── */
-    :root {
-      --gold: #D4AF37;
-      --gold-h: #B8860B;
-      --black: #0A0A0A;
-      --dark: #1A1A1A;
-      --navy: #1B1F2A;
-      --cream: #FAF9F6;
-      --lgray: #F5F7FA;
-      --parch: #F5F5F0;
-      --border: #E5E1D8;
-      --body: #555555;
-      --muted: #888888;
-      --white: #ffffff;
-      --fd: 'Playfair Display', Georgia, serif;
-      --fb: 'Inter', system-ui, sans-serif;
-    }
 
-    /* ── RESET ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--fb); font-size: 15px; line-height: 1.65; color: var(--body); background: var(--cream); overflow-x: hidden; }
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
-
-    /* ── TICKER ── */
-    .ticker-bar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1100;
-      background: var(--black);
-      border-bottom: 1px solid rgba(212,175,55,0.2);
-      height: 32px; overflow: hidden;
-      transition: transform .3s ease;
-    }
-    .ticker-bar.hidden { transform: translateY(-100%); }
-    .ticker-inner { display: flex; align-items: center; height: 100%; }
-    .ticker-badge {
-      flex-shrink: 0; height: 100%; padding: 0 14px;
-      display: flex; align-items: center; gap: 6px;
-      background: rgba(212,175,55,0.12);
-      border-right: 1px solid rgba(212,175,55,0.25);
-      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--gold); white-space: nowrap;
-    }
-    .ticker-scroll { flex: 1; overflow: hidden; position: relative; }
-    .ticker-track {
-      display: flex; white-space: nowrap;
-      animation: scroll-ticker 32s linear infinite;
-    }
-    .ticker-track:hover { animation-play-state: paused; }
-    .t-item {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 0 24px; font-size: 11px;
-      border-right: 1px solid rgba(255,255,255,0.07);
-      color: rgba(255,255,255,0.5);
-    }
-    .t-item .flag { font-size: 13px; }
-    .t-item .cname { color: var(--gold); font-weight: 600; letter-spacing: 0.03em; }
-    .t-item .ctime { color: rgba(255,255,255,0.85); font-variant-numeric: tabular-nums; font-weight: 500; }
-    @keyframes scroll-ticker {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* ── NAV ── */
-    .nav {
-      position: fixed; top: 32px; left: 0; right: 0; z-index: 1000;
-      background: rgba(10,10,10,0.98);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(212,175,55,0.12);
-      transition: top .3s ease, box-shadow .3s;
-    }
-    .nav.scrolled { top: 0; box-shadow: 0 4px 24px rgba(0,0,0,0.5); }
-    .nav-inner {
-      max-width: 1280px; margin: 0 auto; padding: 0 28px;
-      height: 60px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .logo { display: flex; flex-direction: column; line-height: 1; }
-    .logo-name { font-family: var(--fd); font-size: 19px; font-weight: 700; color: var(--white); }
-    .logo-name span { color: var(--gold); }
-    .logo-sub { font-size: 9px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; margin-top: 2px; }
-    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
-    .nav-links a {
-      font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
-      color: rgba(255,255,255,0.65); transition: color .2s; position: relative;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
-      height: 1px; background: var(--gold); transform: scaleX(0); transition: transform .2s;
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-links a:hover::after { transform: scaleX(1); }
-    .nav-cta {
-      background: var(--gold) !important; color: var(--black) !important;
-      font-weight: 700 !important; padding: 8px 18px !important;
-      border-radius: 3px; transition: background .2s !important;
-    }
-    .nav-cta:hover { background: var(--gold-h) !important; }
-    .nav-cta::after { display: none !important; }
-    .burger { display: none; flex-direction: column; gap: 4px; cursor: pointer; }
-    .burger span { width: 22px; height: 2px; background: var(--white); border-radius: 2px; }
-
-    /* ── MOBILE MENU ── */
-    .mmenu {
-      display: none; position: fixed; inset: 0; z-index: 1050;
-      background: var(--black); flex-direction: column;
-      align-items: center; justify-content: center; gap: 28px;
-    }
-    .mmenu.open { display: flex; }
-    .mmenu a { font-family: var(--fd); font-size: 26px; color: var(--white); transition: color .2s; }
-    .mmenu a:hover { color: var(--gold); }
-    .mmenu-close { position: absolute; top: 20px; right: 28px; background: none; border: none; color: var(--white); font-size: 28px; cursor: pointer; line-height: 1; }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: auto; background: var(--black);
-      display: flex; align-items: center;
-      position: relative; overflow: hidden;
-      padding-top: 92px;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 70% 60% at 72% 50%, rgba(212,175,55,0.07) 0%, transparent 60%),
-        linear-gradient(135deg, #0A0A0A 0%, #1B1F2A 60%, #0A0A0A 100%);
-    }
-    .hero-grid {
-      position: absolute; inset: 0;
-      background-image: linear-gradient(rgba(212,175,55,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.035) 1px, transparent 1px);
-      background-size: 56px 56px;
-      mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black, transparent);
-    }
-    .hero-inner {
-      max-width: 1280px; margin: 0 auto; padding: 32px 28px 36px;
-      position: relative; z-index: 2;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
-    }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 9px;
-      font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
-    }
-    .eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
-    .hero h1 {
-      font-family: var(--fd); font-size: clamp(34px, 4vw, 54px);
-      font-weight: 700; color: var(--white); line-height: 1.1;
-      letter-spacing: -0.02em; margin-bottom: 14px;
-    }
-    .hero h1 em { font-style: italic; color: var(--gold); }
-    .hero-sub { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 24px; max-width: 460px; }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; gap: 7px; font-family: var(--fb); font-size: 12px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; border-radius: 3px; cursor: pointer; transition: all .2s; border: none; }
-    .btn-gold { background: var(--gold); color: var(--black); padding: 12px 24px; }
-    .btn-gold:hover { background: var(--gold-h); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(212,175,55,0.22); }
-    .btn-outline { background: transparent; color: var(--white); padding: 11px 24px; border: 1px solid rgba(255,255,255,0.22); }
-    .btn-outline:hover { border-color: var(--gold); background: rgba(212,175,55,0.07); }
-    .btn-outline-dark { background: var(--white); color: var(--black); padding: 11px 24px; border: 1px solid var(--border); }
-    .btn-outline-dark:hover { border-color: var(--gold); }
-    .hero-stats {
-      display: flex; gap: 24px; margin-top: 20px; padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,0.07);
-    }
-    .stat-n { font-family: var(--fd); font-size: 28px; font-weight: 700; color: var(--gold); line-height: 1; }
-    .stat-l { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.09em; text-transform: uppercase; margin-top: 2px; }
-
-    /* hero visual card */
-    .hero-visual { position: relative; height: 420px; }
-    .hcard {
-      position: absolute; border-radius: 10px; padding: 22px;
-      border: 1px solid rgba(212,175,55,0.14);
-      box-shadow: 0 20px 56px rgba(0,0,0,0.5);
-    }
-    .hcard-main {
-      inset: 0; background: linear-gradient(135deg,#1a1a1a,#1b1f2a);
-      z-index: 3;
-    }
-    .hcard-float {
-      width: 200px; bottom: 16px; right: -16px; z-index: 4;
-      background: var(--navy); animation: float 3.8s ease-in-out infinite;
-    }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
-    .card-label { font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
-    .svc-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .svc-list li { display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.65); }
-    .svc-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-    .metric-big { font-family: var(--fd); font-size: 38px; font-weight: 700; color: var(--white); line-height: 1; }
-    .metric-lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 3px; }
-
-    /* ── SECTION BASE ── */
-    .sec { padding: 40px 28px; }
-    .wrap { max-width: 1280px; margin: 0 auto; }
-    .sec-eye {
-      display: inline-flex; align-items: center; gap: 9px;
-      font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
-    }
-    .sec-eye::before { content: ''; width: 22px; height: 1px; background: var(--gold); }
-    .sec-title {
-      font-family: var(--fd); font-size: clamp(22px, 2.5vw, 34px);
-      font-weight: 700; color: var(--black); line-height: 1.15; letter-spacing: -0.02em;
-    }
-    .sec-title.wht { color: var(--white); }
-    .sec-sub { font-size: 14px; color: var(--body); line-height: 1.65; max-width: 500px; margin-top: 6px; }
-    .sec-sub.lt { color: rgba(255,255,255,0.5); }
-    .sec-hd { margin-bottom: 28px; }
-    .sec-hd.ctr { text-align: center; }
-    .sec-hd.ctr .sec-eye { justify-content: center; }
-    .sec-hd.ctr .sec-sub { margin: 6px auto 0; }
-
-    /* ── INTRO ── */
-    .intro-bg { background: var(--cream); }
-    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-    .intro-body p { font-size: 14px; line-height: 1.7; color: var(--body); margin-bottom: 10px; }
-    .intro-body p:last-child { margin-bottom: 0; }
-    .gold-bar { width: 36px; height: 2px; background: var(--gold); margin: 8px 0 14px; }
-    .feat-list { display: flex; flex-direction: column; gap: 8px; }
-    .feat {
-      display: flex; gap: 12px; align-items: flex-start;
-      padding: 11px 14px; background: var(--white);
-      border: 1px solid var(--border); border-left: 3px solid var(--gold);
-      border-radius: 7px; transition: box-shadow .2s, transform .2s;
-    }
-    .feat:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.07); transform: translateX(3px); }
-    .feat-ico { width: 32px; height: 32px; background: rgba(212,175,55,0.09); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
-    .feat-txt h4 { font-size: 12px; font-weight: 700; color: var(--black); margin-bottom: 1px; }
-    .feat-txt p { font-size: 12px; color: var(--body); line-height: 1.5; }
-
-    /* ── SERVICES ── */
-    .svc-bg { background: var(--lgray); }
-    .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .svc-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 9px; padding: 22px 20px; position: relative;
-      overflow: hidden; transition: box-shadow .25s, transform .25s, border-color .25s;
-    }
-    .svc-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .3s;
-    }
-    .svc-card:hover { box-shadow: 0 12px 36px rgba(0,0,0,0.09); transform: translateY(-3px); border-color: transparent; }
-    .svc-card:hover::before { transform: scaleX(1); }
-    .svc-ico { width: 40px; height: 40px; background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.18); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 12px; }
-    .svc-card h3 { font-family: var(--fd); font-size: 17px; font-weight: 700; color: var(--black); margin-bottom: 7px; }
-    .svc-card p { font-size: 13px; color: var(--body); line-height: 1.65; margin-bottom: 14px; }
-    .svc-lnk { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.06em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 5px; transition: gap .2s; }
-    .svc-card:hover .svc-lnk { gap: 9px; }
-
-    /* ── WHY ── */
-    .why-bg { background: var(--dark); }
-    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: start; }
-    .why-list { list-style: none; display: flex; flex-direction: column; gap: 0; margin-top: 18px; }
-    .why-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .why-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .why-n { font-family: var(--fd); font-size: 24px; font-weight: 700; color: rgba(212,175,55,0.18); line-height: 1; flex-shrink: 0; width: 32px; }
-    .why-txt h4 { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
-    .why-txt p { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.6; }
-    .why-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .why-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,175,55,0.1); border-radius: 9px; padding: 18px 16px; text-align: center; }
-    .why-card-n { font-family: var(--fd); font-size: 32px; font-weight: 700; color: var(--gold); line-height: 1; }
-    .why-card-l { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
-
-    /* ── PROCESS ── */
-    .proc-bg { background: var(--cream); }
-    .proc-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; }
-    .proc-steps::before {
-      content: ''; position: absolute; top: 22px; left: 12.5%; right: 12.5%;
-      height: 1px; background: linear-gradient(90deg, var(--gold), rgba(212,175,55,0.25), var(--gold));
-    }
-    .proc-step { padding: 0 12px; text-align: center; }
-    .proc-num {
-      width: 44px; height: 44px; background: var(--white); border: 2px solid var(--gold);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-family: var(--fd); font-size: 16px; font-weight: 700; color: var(--gold);
-      margin: 0 auto 12px; position: relative; z-index: 2;
-      box-shadow: 0 3px 12px rgba(212,175,55,0.14);
-    }
-    .proc-step h4 { font-size: 13px; font-weight: 700; color: var(--black); margin-bottom: 5px; }
-    .proc-step p { font-size: 12px; color: var(--body); line-height: 1.6; }
-
-    /* ── TESTIMONIALS ── */
-    .testi-bg { background: var(--navy); }
-    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
-    .testi-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,175,55,0.1); border-radius: 9px; padding: 20px 18px; position: relative; }
-    .testi-card::before { content: '\201C'; font-family: var(--fd); font-size: 52px; color: rgba(212,175,55,0.1); position: absolute; top: 8px; left: 14px; line-height: 1; }
-    .testi-stars { display: flex; gap: 2px; margin-bottom: 10px; }
-    .star { color: var(--gold); font-size: 11px; }
-    .testi-txt { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 14px; position: relative; z-index: 1; }
-    .testi-author { display: flex; align-items: center; gap: 10px; }
-    .t-avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg,var(--gold),var(--gold-h)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; color: var(--black); flex-shrink: 0; }
-    .t-name { font-size: 12px; font-weight: 700; color: var(--white); }
-    .t-role { font-size: 11px; color: rgba(255,255,255,0.38); margin-top: 1px; }
-
-    /* ── BLOG ── */
-    .blog-bg { background: var(--lgray); }
-    .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .blog-card { background: var(--white); border: 1px solid var(--border); border-radius: 9px; overflow: hidden; transition: box-shadow .25s, transform .25s; }
-    .blog-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.09); transform: translateY(-3px); }
-    .blog-thumb { height: 140px; background: linear-gradient(135deg,var(--dark),var(--navy)); position: relative; overflow: hidden; }
-    .blog-patt { position: absolute; inset: 0; background-image: linear-gradient(rgba(212,175,55,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.05) 1px, transparent 1px); background-size: 26px 26px; }
-    .blog-tag { position: absolute; bottom: 10px; left: 10px; background: var(--gold); color: var(--black); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 9px; border-radius: 2px; }
-    .blog-body { padding: 16px; }
-    .blog-meta { display: flex; gap: 10px; font-size: 11px; color: var(--muted); margin-bottom: 6px; }
-    .blog-card h3 { font-family: var(--fd); font-size: 15px; font-weight: 700; color: var(--black); line-height: 1.3; margin-bottom: 6px; }
-    .blog-card p { font-size: 12px; color: var(--body); line-height: 1.6; margin-bottom: 12px; }
-    .blog-more { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.06em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 5px; transition: gap .2s; }
-    .blog-card:hover .blog-more { gap: 9px; }
-
-    /* ── CTA BAND ── */
-    .cta-band { background: var(--black); position: relative; overflow: hidden; }
-    .cta-band-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 55% 80% at 78% 50%, rgba(212,175,55,0.07) 0%, transparent 60%); }
-    .cta-inner { max-width: 1280px; margin: 0 auto; padding: 40px 28px; position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 36px; }
-    .cta-inner h2 { font-family: var(--fd); font-size: clamp(22px, 2.4vw, 34px); font-weight: 700; color: var(--white); line-height: 1.2; max-width: 440px; }
-    .cta-inner h2 em { font-style: italic; color: var(--gold); }
-    .cta-sub { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 6px; max-width: 440px; }
-    .cta-btns { display: flex; gap: 12px; flex-shrink: 0; }
-
-    /* ── CONTACT ── */
-    .contact-bg { background: var(--cream); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 44px; }
-    .contact-info h3 { font-family: var(--fd); font-size: 22px; font-weight: 700; color: var(--black); margin-bottom: 10px; }
-    .contact-info p { font-size: 13px; color: var(--body); line-height: 1.7; margin-bottom: 22px; }
-    .cdet-list { display: flex; flex-direction: column; gap: 10px; }
-    .cdet { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--body); }
-    .cdet-ico { width: 32px; height: 32px; background: rgba(212,175,55,0.09); border: 1px solid rgba(212,175,55,0.18); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
-    .form-wrap { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 26px; box-shadow: 0 4px 24px rgba(0,0,0,0.05); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .fg { margin-bottom: 10px; }
-    .fg label { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--black); margin-bottom: 5px; }
-    .fg input, .fg select, .fg textarea {
-      width: 100%; padding: 9px 12px; background: var(--parch);
-      border: 1px solid var(--border); border-radius: 5px;
-      font-family: var(--fb); font-size: 13px; color: var(--black);
-      outline: none; transition: border-color .2s, box-shadow .2s;
-    }
-    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,175,55,0.1); }
-    .fg textarea { resize: vertical; min-height: 88px; }
-    .form-submit { width: 100%; background: var(--gold); color: var(--black); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 12px; border-radius: 5px; border: none; cursor: pointer; transition: background .2s, transform .15s; margin-top: 4px; }
-    .form-submit:hover { background: var(--gold-h); transform: translateY(-2px); }
-
-    /* ── FOOTER ── */
-    footer { background: var(--black); border-top: 1px solid rgba(212,175,55,0.08); }
-    .foot-main { max-width: 1280px; margin: 0 auto; padding: 36px 28px 24px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 30px; }
-    .foot-brand-name { font-family: var(--fd); font-size: 18px; font-weight: 700; color: var(--white); }
-    .foot-brand-name span { color: var(--gold); }
-    .foot-desc { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.6; margin: 10px 0 16px; max-width: 220px; }
-    .socials { display: flex; gap: 7px; }
-    .soc { width: 28px; height: 28px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: rgba(255,255,255,0.45); transition: all .2s; }
-    .soc:hover { background: rgba(212,175,55,0.1); border-color: rgba(212,175,55,0.28); color: var(--gold); }
-    .foot-col h5 { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-    .foot-links { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .foot-links a { font-size: 12px; color: rgba(255,255,255,0.4); transition: color .2s; }
-    .foot-links a:hover { color: var(--white); }
-    .foot-bot { border-top: 1px solid rgba(255,255,255,0.05); padding: 14px 28px; max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .foot-bot p { font-size: 12px; color: rgba(255,255,255,0.2); }
-    .foot-bot-links { display: flex; gap: 18px; }
-    .foot-bot-links a { font-size: 12px; color: rgba(255,255,255,0.2); transition: color .2s; }
-    .foot-bot-links a:hover { color: rgba(255,255,255,0.55); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1023px) {
-      .ticker-bar { display: none; }
-      .nav { top: 0; }
-      .nav-links { display: none; }
-      .burger { display: flex; }
-      .hero-inner { grid-template-columns: 1fr; gap: 28px; }
-      .hero-visual { display: none; }
-      .intro-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; gap: 28px; }
-      .svc-grid, .testi-grid, .blog-grid { grid-template-columns: 1fr 1fr; }
-      .proc-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
-      .proc-steps::before { display: none; }
-      .foot-main { grid-template-columns: 1fr 1fr; }
-      .cta-inner { flex-direction: column; align-items: flex-start; }
-    }
-    @media (max-width: 767px) {
-      .sec { padding: 32px 16px; }
-      .svc-grid, .testi-grid, .blog-grid, .why-cards, .proc-steps { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .foot-main { grid-template-columns: 1fr; gap: 24px; }
-      .foot-bot { flex-direction: column; text-align: center; }
-      .hero-stats { flex-direction: column; gap: 12px; }
-      .form-wrap { padding: 18px 14px; }
-      .nav-inner { padding: 0 16px; }
-      .hero-inner { padding: 28px 16px 32px; }
-    }
-  </style>
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
-<!-- TICKER -->
+<!-- ── TICKER ── -->
 <div class="ticker-bar">
   <div class="ticker-inner">
-    <div class="ticker-badge">
-      <span>🌍</span> Live Time
-    </div>
+    <div class="ticker-badge">🌍 Live Time</div>
     <div class="ticker-scroll">
       <div class="ticker-track" id="tickerTrack"></div>
     </div>
   </div>
 </div>
 
-<!-- NAV -->
+<!-- ── NAV ── -->
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
     <a href="#home" class="logo">
-      <span class="logo-name">Nexa<span>Tech</span></span>
-      <span class="logo-sub">IT Consulting</span>
+      <span class="logo-name" id="logoName"></span>
+      <span class="logo-sub"  id="logoSub"></span>
     </a>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#contact" class="nav-cta">Free Consultation</a></li>
-    </ul>
-    <div class="burger" onclick="openMenu()"><span></span><span></span><span></span></div>
+    <ul class="nav-links" id="navLinks"></ul>
+    <div class="burger" onclick="openMenu()">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
+<!-- ── MOBILE MENU ── -->
 <div class="mmenu" id="mmenu">
   <button class="mmenu-close" onclick="closeMenu()">&#x2715;</button>
-  <a href="#home" onclick="closeMenu()">Home</a>
-  <a href="#about" onclick="closeMenu()">About</a>
-  <a href="#services" onclick="closeMenu()">Services</a>
-  <a href="#blog" onclick="closeMenu()">Blog</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
-  <a href="#contact" class="btn btn-gold" onclick="closeMenu()">Free Consultation →</a>
+  <div id="mobileLinks"></div>
 </div>
 
-<!-- HERO -->
+<!-- ── HERO ── -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-inner">
     <div>
-      <div class="eyebrow">IT Consulting Excellence</div>
-      <h1>Technology That <em>Works</em><br>for Your Business</h1>
-      <p class="hero-sub">We partner with growing businesses to deliver tailored IT strategies, managed services, and digital transformation — so your technology drives results, not frustration.</p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn btn-gold">Get a Free Consultation →</a>
-        <a href="#services" class="btn btn-outline">Explore Services</a>
-      </div>
-      <div class="hero-stats">
-        <div><div class="stat-n">200+</div><div class="stat-l">Clients Served</div></div>
-        <div><div class="stat-n">98%</div><div class="stat-l">Client Retention</div></div>
-        <div><div class="stat-n">15+</div><div class="stat-l">Years Experience</div></div>
-      </div>
+      <div class="eyebrow" id="heroEyebrow"></div>
+      <h1 id="heroHeadline"></h1>
+      <p class="hero-sub" id="heroSub"></p>
+      <div class="hero-btns" id="heroBtns"></div>
+      <div class="hero-stats" id="heroStats"></div>
     </div>
     <div class="hero-visual">
       <div class="hcard hcard-main">
-        <div class="card-label">Our Core Services</div>
-        <ul class="svc-list">
-          <li>IT Strategy &amp; Consulting</li>
-          <li>Managed IT Services</li>
-          <li>Cybersecurity Solutions</li>
-          <li>Cloud Migration &amp; Support</li>
-          <li>Digital Transformation</li>
-          <li>Custom Software Development</li>
-          <li>Staff Augmentation</li>
-          <li>IT Training &amp; Placement</li>
-        </ul>
+        <div class="card-label" id="heroCardLabel"></div>
+        <ul class="svc-list" id="heroCardServices"></ul>
       </div>
       <div class="hcard hcard-float">
-        <div class="card-label">Client Satisfaction</div>
-        <div class="metric-big">98%</div>
-        <div class="metric-lbl">Average satisfaction score</div>
+        <div class="card-label" id="heroMetricLabel"></div>
+        <div class="metric-big" id="heroMetricValue"></div>
+        <div class="metric-lbl" id="heroMetricSub"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ── ABOUT ── -->
 <section class="sec intro-bg" id="about">
   <div class="wrap">
     <div class="intro-grid">
       <div class="intro-body">
-        <div class="sec-eye">Who We Are</div>
-        <h2 class="sec-title">People-First IT Consulting</h2>
+        <div class="sec-eye" id="aboutEyebrow"></div>
+        <h2 class="sec-title" id="aboutHeading"></h2>
         <div class="gold-bar"></div>
-        <p>We're a team of experienced IT professionals who believe technology should empower your team — not slow them down. Founded on the principle that great IT consulting should be accessible, transparent, and results-driven, we partner with businesses at every stage of their growth.</p>
-        <p>From start-ups navigating their first IT strategy to established enterprises pursuing digital transformation, we bring Fortune-500-level expertise with the personability of a dedicated local partner.</p>
-        <div style="margin-top:18px">
-          <a href="#contact" class="btn btn-gold">Work With Us →</a>
-        </div>
+        <div id="aboutBody"></div>
+        <div style="margin-top:18px" id="aboutCta"></div>
       </div>
-      <div class="feat-list">
-        <div class="feat">
-          <div class="feat-ico">⚡</div>
-          <div class="feat-txt"><h4>Fast Response Times</h4><p>We respond within hours, not days. Your business can't afford to wait — and neither can we.</p></div>
-        </div>
-        <div class="feat">
-          <div class="feat-ico">🎯</div>
-          <div class="feat-txt"><h4>Tailored Solutions</h4><p>No cookie-cutter packages. Every engagement is scoped around your unique business needs.</p></div>
-        </div>
-        <div class="feat">
-          <div class="feat-ico">🛡️</div>
-          <div class="feat-txt"><h4>Proven Track Record</h4><p>200+ successful engagements across industries — with measurable outcomes and long-term relationships.</p></div>
-        </div>
-        <div class="feat">
-          <div class="feat-ico">🌐</div>
-          <div class="feat-txt"><h4>Global Reach, Local Focus</h4><p>Operating across India, US, UK, and beyond — international expertise with dedicated local support.</p></div>
-        </div>
-      </div>
+      <div class="feat-list" id="aboutFeatures"></div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- ── SERVICES ── -->
 <section class="sec svc-bg" id="services">
   <div class="wrap">
     <div class="sec-hd ctr">
-      <div class="sec-eye">What We Do</div>
-      <h2 class="sec-title">Our Services &amp; Offerings</h2>
-      <p class="sec-sub">Comprehensive IT consulting designed to align your technology with your business goals — from strategy to implementation and beyond.</p>
+      <div class="sec-eye" id="svcEyebrow"></div>
+      <h2 class="sec-title" id="svcHeading"></h2>
+      <p class="sec-sub" id="svcSub"></p>
     </div>
-    <div class="svc-grid">
-      <div class="svc-card"><div class="svc-ico">📊</div><h3>IT Strategy &amp; Consulting</h3><p>Build a clear technology roadmap aligned with your goals — so every IT investment drives real competitive advantage.</p><span class="svc-lnk">Learn More →</span></div>
-      <div class="svc-card"><div class="svc-ico">🖥️</div><h3>Managed IT Services</h3><p>Fully managed IT support, monitoring, and maintenance so your team stays productive and systems stay secure, 24/7.</p><span class="svc-lnk">Learn More →</span></div>
-      <div class="svc-card"><div class="svc-ico">🔒</div><h3>Cybersecurity</h3><p>End-to-end security assessments, compliance frameworks, and incident response planning to protect your business.</p><span class="svc-lnk">Learn More →</span></div>
-      <div class="svc-card"><div class="svc-ico">☁️</div><h3>Cloud Solutions</h3><p>Seamless cloud migration, architecture design, and ongoing management across AWS, Azure, and Google Cloud.</p><span class="svc-lnk">Learn More →</span></div>
-      <div class="svc-card"><div class="svc-ico">🔄</div><h3>Digital Transformation</h3><p>Reimagine your business with automation, AI, and modern platforms — accelerating efficiency and new revenue.</p><span class="svc-lnk">Learn More →</span></div>
-      <div class="svc-card"><div class="svc-ico">💻</div><h3>Custom Software Dev</h3><p>Bespoke web apps, mobile solutions, and enterprise software built with clean architecture and long-term maintainability.</p><span class="svc-lnk">Learn More →</span></div>
-      <div class="svc-card"><div class="svc-ico">🏗️</div><h3>IT Infrastructure</h3><p>Design, deployment, and management of your IT infrastructure — from network architecture to helpdesk support.</p><span class="svc-lnk">Learn More →</span></div>
-      <div class="svc-card"><div class="svc-ico">👥</div><h3>Staff Augmentation</h3><p>Scale your technical team on demand with vetted developers, engineers, and IT specialists on any basis.</p><span class="svc-lnk">Learn More →</span></div>
-      <div class="svc-card"><div class="svc-ico">🎓</div><h3>IT Training &amp; Placement</h3><p>Upskill your workforce with structured training programmes and access our talent placement network.</p><span class="svc-lnk">Learn More →</span></div>
-    </div>
-    <div style="text-align:center;margin-top:24px">
-      <a href="#contact" class="btn btn-gold">Request a Proposal →</a>
-    </div>
+    <div class="svc-grid" id="svcGrid"></div>
+    <div style="text-align:center;margin-top:24px" id="svcCta"></div>
   </div>
 </section>
 
-<!-- WHY CHOOSE US -->
+<!-- ── WHY US ── -->
 <section class="sec why-bg">
   <div class="wrap">
     <div class="why-grid">
       <div>
-        <div class="sec-eye" style="color:var(--gold)">Why NexaTech</div>
-        <h2 class="sec-title wht">Expertise You Can <em style="font-style:italic;color:var(--gold)">Trust</em></h2>
-        <ul class="why-list">
-          <li class="why-item">
-            <div class="why-n">01</div>
-            <div class="why-txt"><h4>Outcome-Driven Engagements</h4><p>We don't just deliver projects — we deliver measurable outcomes mapped to verified business results.</p></div>
-          </li>
-          <li class="why-item">
-            <div class="why-n">02</div>
-            <div class="why-txt"><h4>Transparent Pricing</h4><p>Detailed, honest proposals with no surprises — you always know what you're getting and why it matters.</p></div>
-          </li>
-          <li class="why-item">
-            <div class="why-n">03</div>
-            <div class="why-txt"><h4>Fully Managed Service</h4><p>Proactive monitoring, updates, and reporting are all handled before you even know there's an issue.</p></div>
-          </li>
-          <li class="why-item">
-            <div class="why-n">04</div>
-            <div class="why-txt"><h4>Multi-Region Expertise</h4><p>Teams across India, UK, USA and beyond — global capability with 24/7 coverage and local delivery.</p></div>
-          </li>
-        </ul>
+        <div class="sec-eye" id="whyEyebrow"></div>
+        <h2 class="sec-title wht" id="whyHeading"></h2>
+        <ul class="why-list" id="whyList"></ul>
       </div>
-      <div class="why-cards">
-        <div class="why-card"><div class="why-card-n">200+</div><div class="why-card-l">Clients Served</div></div>
-        <div class="why-card"><div class="why-card-n">98%</div><div class="why-card-l">Retention Rate</div></div>
-        <div class="why-card"><div class="why-card-n">15+</div><div class="why-card-l">Years Experience</div></div>
-        <div class="why-card"><div class="why-card-n">24/7</div><div class="why-card-l">Support Coverage</div></div>
-        <div class="why-card" style="grid-column:span 2">
-          <div class="why-card-n" style="font-size:28px">6 Countries</div>
-          <div class="why-card-l">India · USA · UK · Australia · Canada · UAE</div>
-        </div>
-      </div>
+      <div class="why-cards" id="whyCards"></div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
+<!-- ── PROCESS ── -->
 <section class="sec proc-bg">
   <div class="wrap">
     <div class="sec-hd ctr">
-      <div class="sec-eye">How We Work</div>
-      <h2 class="sec-title">Our Proven Process</h2>
-      <p class="sec-sub">A clear, collaborative engagement model built around your outcomes — from first conversation to long-term partnership.</p>
+      <div class="sec-eye" id="procEyebrow"></div>
+      <h2 class="sec-title" id="procHeading"></h2>
+      <p class="sec-sub" id="procSub"></p>
     </div>
-    <div class="proc-steps">
-      <div class="proc-step"><div class="proc-num">01</div><h4>Discover</h4><p>Deep-dive workshops and stakeholder interviews to understand your business, challenges, and IT environment.</p></div>
-      <div class="proc-step"><div class="proc-num">02</div><h4>Plan</h4><p>A clear, costed roadmap with milestones, risk mitigation, and expected outcomes mapped to your objectives.</p></div>
-      <div class="proc-step"><div class="proc-num">03</div><h4>Implement</h4><p>Expert execution with regular check-ins, transparent reporting, and zero disruption to your operations.</p></div>
-      <div class="proc-step"><div class="proc-num">04</div><h4>Support</h4><p>Long-term IT partnership — monitoring, optimising, and evolving your technology as your business grows.</p></div>
-    </div>
+    <div class="proc-steps" id="procSteps"></div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- ── TESTIMONIALS ── -->
 <section class="sec testi-bg">
   <div class="wrap">
     <div class="sec-hd ctr">
-      <div class="sec-eye">Client Stories</div>
-      <h2 class="sec-title wht">What Our Clients Say</h2>
-      <p class="sec-sub lt">Don't just take our word for it — hear from businesses we've helped transform.</p>
+      <div class="sec-eye" id="testiEyebrow"></div>
+      <h2 class="sec-title wht" id="testiHeading"></h2>
+      <p class="sec-sub lt" id="testiSub"></p>
     </div>
-    <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="testi-txt">NexaTech completely transformed our IT infrastructure. We went from constant outages to near-zero downtime in under three months. Their team was responsive, knowledgeable, and genuinely invested in our success.</p>
-        <div class="testi-author"><div class="t-avatar">SM</div><div><div class="t-name">Sarah Mitchell</div><div class="t-role">CEO, Apex Logistics Group</div></div></div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="testi-txt">The cloud migration was handled flawlessly — zero data loss, minimal disruption, costs dropped by 35%. What really set them apart was explaining every decision in plain language, not jargon.</p>
-        <div class="testi-author"><div class="t-avatar">RK</div><div><div class="t-name">Ravi Kumar</div><div class="t-role">CTO, Pinnacle Healthcare Systems</div></div></div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="testi-txt">We brought NexaTech in for a cybersecurity audit and ended up overhauling our entire security posture. Their team identified vulnerabilities we didn't even know existed. Invaluable peace of mind.</p>
-        <div class="testi-author"><div class="t-avatar">JT</div><div><div class="t-name">James Thornton</div><div class="t-role">Director of IT, Greenfield Financial</div></div></div>
-      </div>
-    </div>
+    <div class="testi-grid" id="testiGrid"></div>
   </div>
 </section>
 
-<!-- BLOG -->
+<!-- ── BLOG ── -->
 <section class="sec blog-bg" id="blog">
   <div class="wrap">
     <div class="sec-hd ctr">
-      <div class="sec-eye">Insights &amp; Expertise</div>
-      <h2 class="sec-title">Latest from the Blog</h2>
-      <p class="sec-sub">Thought leadership, practical guides, and industry insights from our team of IT professionals.</p>
+      <div class="sec-eye" id="blogEyebrow"></div>
+      <h2 class="sec-title" id="blogHeading"></h2>
+      <p class="sec-sub" id="blogSub"></p>
     </div>
-    <div class="blog-grid">
-      <div class="blog-card">
-        <div class="blog-thumb"><div class="blog-patt"></div><span class="blog-tag">Cybersecurity</span></div>
-        <div class="blog-body">
-          <div class="blog-meta"><span>📅 Mar 5, 2026</span><span>· 7 min read</span></div>
-          <h3>Cybersecurity Tips Every Small Business Needs in 2026</h3>
-          <p>Cyber threats are evolving faster than ever. Here are the foundational security practices every business should have in place right now.</p>
-          <span class="blog-more">Read More →</span>
-        </div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-thumb" style="background:linear-gradient(135deg,#1a1a2e,#16213e)"><div class="blog-patt"></div><span class="blog-tag">Cloud</span></div>
-        <div class="blog-body">
-          <div class="blog-meta"><span>📅 Feb 20, 2026</span><span>· 9 min read</span></div>
-          <h3>A Practical Cloud Migration Guide for Small Business Owners</h3>
-          <p>Thinking about moving to the cloud? This step-by-step guide breaks down what to expect, what to avoid, and how to choose the right platform.</p>
-          <span class="blog-more">Read More →</span>
-        </div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-thumb" style="background:linear-gradient(135deg,#0f2027,#203a43)"><div class="blog-patt"></div><span class="blog-tag">IT Strategy</span></div>
-        <div class="blog-body">
-          <div class="blog-meta"><span>📅 Feb 8, 2026</span><span>· 6 min read</span></div>
-          <h3>How to Choose an IT Consultant: 7 Questions to Ask First</h3>
-          <p>Not all IT consultants are equal. Before you commit, make sure you're asking these seven critical questions during the evaluation process.</p>
-          <span class="blog-more">Read More →</span>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:24px">
-      <a href="#blog" class="btn btn-outline-dark">View All Articles →</a>
-    </div>
+    <div class="blog-grid" id="blogGrid"></div>
+    <div style="text-align:center;margin-top:24px" id="blogCta"></div>
   </div>
 </section>
 
-<!-- CTA BAND -->
+<!-- ── CTA BAND ── -->
 <div class="cta-band">
   <div class="cta-band-bg"></div>
   <div class="cta-inner">
     <div>
-      <h2>Ready to <em>Transform</em> Your IT?</h2>
-      <p class="cta-sub">Let's have a no-obligation conversation about your technology challenges. We typically respond within 1 business day.</p>
+      <h2 id="ctaHeading"></h2>
+      <p class="cta-sub" id="ctaSub"></p>
     </div>
-    <div class="cta-btns">
-      <a href="#contact" class="btn btn-gold">Book a Free Consultation →</a>
-      <a href="#services" class="btn btn-outline">View Services</a>
-    </div>
+    <div class="cta-btns" id="ctaBtns"></div>
   </div>
 </div>
 
-<!-- CONTACT -->
+<!-- ── CONTACT ── -->
 <section class="sec contact-bg" id="contact">
   <div class="wrap">
     <div class="sec-hd">
-      <div class="sec-eye">Get In Touch</div>
-      <h2 class="sec-title">Let's Talk</h2>
-      <p class="sec-sub">Fill in the form and we'll be in touch within one business day — no sales pressure, just an honest conversation.</p>
+      <div class="sec-eye" id="contactEyebrow"></div>
+      <h2 class="sec-title" id="contactHeading"></h2>
+      <p class="sec-sub" id="contactSub"></p>
     </div>
     <div class="contact-grid">
       <div class="contact-info">
-        <h3>We're Here When You Need Us</h3>
-        <p>Whether dealing with an urgent IT issue, exploring a new project, or simply wanting to understand your options — our team is ready for an honest, helpful conversation.</p>
-        <div class="cdet-list">
-          <div class="cdet"><div class="cdet-ico">📧</div><span>hello&#64;nexatechconsulting.com</span></div>
-          <div class="cdet"><div class="cdet-ico">📞</div><span>+1 (555) 123-4567</span></div>
-          <div class="cdet"><div class="cdet-ico">⏱️</div><span>Response within 1 business day</span></div>
-          <div class="cdet"><div class="cdet-ico">🌐</div><span>Serving clients globally across 6 countries</span></div>
-        </div>
+        <h3 id="contactInfoHead"></h3>
+        <p id="contactInfoBody"></p>
+        <div class="cdet-list" id="contactDetails"></div>
       </div>
       <div class="form-wrap">
-        <div class="form-row">
-          <div class="fg"><label>First Name</label><input type="text" placeholder="John" /></div>
-          <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith" /></div>
-        </div>
-        <div class="form-row">
-          <div class="fg"><label>Email Address</label><input type="email" placeholder="john@company.com" /></div>
-          <div class="fg"><label>Phone (Optional)</label><input type="tel" placeholder="+1 (555) 000-0000" /></div>
-        </div>
-        <div class="fg"><label>Company Name</label><input type="text" placeholder="Your Company Ltd." /></div>
-        <div class="fg">
-          <label>Service Interested In</label>
-          <select>
-            <option value="">Select a service...</option>
-            <option>IT Strategy &amp; Consulting</option>
-            <option>Managed IT Services</option>
-            <option>Cybersecurity</option>
-            <option>Cloud Solutions</option>
-            <option>Digital Transformation</option>
-            <option>Custom Software Development</option>
-            <option>IT Infrastructure &amp; Support</option>
-            <option>Staff Augmentation</option>
-            <option>IT Training &amp; Placement</option>
-            <option>Immigration &amp; Visa Consultations</option>
-            <option>Other / Not Sure</option>
-          </select>
-        </div>
-        <div class="fg"><label>Message</label><textarea placeholder="Tell us about your project or challenge..."></textarea></div>
-        <button class="form-submit">Send Message →</button>
+        <form onsubmit="return false">
+          <div class="form-row">
+            <div class="fg"><label>Full Name</label><input type="text"   placeholder="John Smith" /></div>
+            <div class="fg"><label>Email</label>    <input type="email"  placeholder="john@company.com" /></div>
+          </div>
+          <div class="form-row">
+            <div class="fg"><label>Phone</label>    <input type="tel"    placeholder="+1 (555) 000-0000" /></div>
+            <div class="fg"><label>Company</label>  <input type="text"   placeholder="Your Company Ltd" /></div>
+          </div>
+          <div class="fg">
+            <label>Service Interested In</label>
+            <select><option value="">Select a service…</option><span id="serviceOptions"></span></select>
+          </div>
+          <div class="fg"><label>Message</label><textarea placeholder="Tell us about your project or challenge…"></textarea></div>
+          <button type="submit" class="form-submit">Send Message →</button>
+        </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ── FOOTER ── -->
 <footer>
   <div class="foot-main">
     <div>
-      <div class="foot-brand-name">Nexa<span>Tech</span> Consulting</div>
-      <p class="foot-desc">Expert IT consulting for growing businesses — strategy, managed services, cybersecurity, and digital transformation.</p>
-      <div class="socials">
-        <a href="#" class="soc" aria-label="LinkedIn">in</a>
-        <a href="#" class="soc" aria-label="Twitter">𝕏</a>
-        <a href="#" class="soc" aria-label="Facebook">f</a>
-        <a href="#" class="soc" aria-label="Instagram">ig</a>
-      </div>
+      <div class="foot-brand-name" id="footBrandName"></div>
+      <p class="foot-desc" id="footDesc"></p>
+      <div class="socials" id="footSocials"></div>
     </div>
-    <div class="foot-col">
-      <h5>Services</h5>
-      <ul class="foot-links">
-        <li><a href="#services">IT Strategy &amp; Consulting</a></li>
-        <li><a href="#services">Managed IT Services</a></li>
-        <li><a href="#services">Cybersecurity</a></li>
-        <li><a href="#services">Cloud Solutions</a></li>
-        <li><a href="#services">Digital Transformation</a></li>
-        <li><a href="#services">Custom Software Dev</a></li>
-        <li><a href="#services">Staff Augmentation</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h5>Company</h5>
-      <ul class="foot-links">
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms of Service</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h5>Contact</h5>
-      <ul class="foot-links">
-        <li><a href="#">hello&#64;nexatechconsulting.com</a></li>
-        <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-        <li><a href="#contact">Book a Consultation</a></li>
-      </ul>
-      <div style="margin-top:18px">
-        <h5>Offices</h5>
-        <ul class="foot-links">
-          <li><a href="#">India</a></li>
-          <li><a href="#">United States</a></li>
-          <li><a href="#">United Kingdom</a></li>
-          <li><a href="#">Australia</a></li>
-        </ul>
-      </div>
-    </div>
+    <div id="footCols" style="display:contents"></div>
   </div>
   <div class="foot-bot">
-    <p>&#169; 2026 NexaTech Consulting. All rights reserved.</p>
-    <div class="foot-bot-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">Cookie Policy</a>
-    </div>
+    <p>&copy; <span id="footYear"></span> NexaTech Consulting. All rights reserved.</p>
+    <div class="foot-bot-links" id="footLegal"></div>
   </div>
 </footer>
 
-<script>
-(function() {
-  /* ── TICKER ── */
-  var zones = [
-    { flag: '🇮🇳', name: 'India (IST)',        tz: 'Asia/Kolkata' },
-    { flag: '🇬🇧', name: 'UK (GMT/BST)',        tz: 'Europe/London' },
-    { flag: '🇺🇸', name: 'USA (ET)',            tz: 'America/New_York' },
-    { flag: '🇨🇳', name: 'China (CST)',         tz: 'Asia/Shanghai' },
-    { flag: '🇯🇵', name: 'Japan (JST)',         tz: 'Asia/Tokyo' },
-    { flag: '🇦🇺', name: 'Australia (AEDT)',    tz: 'Australia/Sydney' }
-  ];
+<!-- Scripts: data first, then behaviour -->
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
 
-  function fmtTime(tz) {
-    return new Date().toLocaleTimeString('en-GB', {
-      timeZone: tz, hour: '2-digit', minute: '2-digit', second: '2-digit'
-    });
-  }
-
-  function buildTrack() {
-    var track = document.getElementById('tickerTrack');
-    if (!track) return;
-    var html = '';
-    // build twice for seamless infinite loop
-    for (var pass = 0; pass < 2; pass++) {
-      for (var i = 0; i < zones.length; i++) {
-        var z = zones[i];
-        html += '<div class="t-item">'
-              + '<span class="flag">' + z.flag + '</span>'
-              + '<span class="cname">' + z.name + '</span>'
-              + '<span class="ctime">' + fmtTime(z.tz) + '</span>'
-              + '</div>';
-      }
-    }
-    track.innerHTML = html;
-  }
-
-  function updateTimes() {
-    var items = document.querySelectorAll('.t-item .ctime');
-    for (var i = 0; i < zones.length; i++) {
-      var t = fmtTime(zones[i].tz);
-      if (items[i])                 items[i].textContent = t;
-      if (items[i + zones.length])  items[i + zones.length].textContent = t;
-    }
-  }
-
-  buildTrack();
-  setInterval(updateTimes, 1000);
-
-  /* ── NAV SCROLL ── */
-  var nav = document.getElementById('mainNav');
-  var ticker = document.querySelector('.ticker-bar');
-  window.addEventListener('scroll', function() {
-    var scrolled = window.scrollY > 40;
-    nav.classList.toggle('scrolled', scrolled);
-    if (ticker) ticker.classList.toggle('hidden', scrolled);
-  });
-
-  /* ── SCROLL REVEAL ── */
-  var revealEls = document.querySelectorAll('.svc-card, .why-card, .testi-card, .blog-card, .feat, .proc-step');
-  revealEls.forEach(function(el) {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
-  });
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  revealEls.forEach(function(el) { io.observe(el); });
-})();
-
-/* ── MOBILE MENU ── */
-function openMenu()  { document.getElementById('mmenu').classList.add('open');    document.body.style.overflow = 'hidden'; }
-function closeMenu() { document.getElementById('mmenu').classList.remove('open'); document.body.style.overflow = ''; }
-</script>
 </body>
 </html>
