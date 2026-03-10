@@ -17,13 +17,13 @@ const SITE = {
 
   /* ── Navigation ── */
   nav: [
-    { label: 'Home',     href: '#home'     },
-    { label: 'About',    href: '#about'    },
-    { label: 'Services', href: '#services' },
-    { label: 'Blog',     href: '#blog'     },
-    { label: 'Contact',  href: '#contact'  },
+    { label: 'Home',     href: 'index.html',    pageFile: 'index.html'    },
+    { label: 'About',    href: 'about.html',    pageFile: 'about.html'    },
+    { label: 'Services', href: 'services.html', pageFile: 'services.html' },
+    { label: 'Blog',     href: 'blog.html',     pageFile: 'blog.html'     },
+    { label: 'Contact',  href: 'contact.html',  pageFile: 'contact.html'  },
   ],
-  navCta: { label: 'Free Consultation', href: '#contact' },
+  navCta: { label: 'Free Consultation', href: 'contact.html' },
 
   /* ── Hero ── */
   hero: {
@@ -31,8 +31,8 @@ const SITE = {
     headline: 'Technology That <em>Works</em><br>for Your Business',
     sub:      'We partner with growing businesses to deliver tailored IT strategies, managed services, and digital transformation — so your technology drives results, not frustration.',
     ctas: [
-      { label: 'Get a Free Consultation →', href: '#contact', style: 'btn-gold'    },
-      { label: 'Explore Services',          href: '#services', style: 'btn-outline' },
+      { label: 'Get a Free Consultation →', href: 'contact.html', style: 'btn-gold'    },
+      { label: 'Explore Services',          href: 'services.html', style: 'btn-outline' },
     ],
     stats: [
       { n: '200+', l: 'Clients Served'    },
@@ -63,7 +63,7 @@ const SITE = {
       'We\'re a team of experienced IT professionals who believe technology should empower your team — not slow them down. Founded on the principle that great IT consulting should be accessible, transparent, and results-driven, we partner with businesses at every stage of their growth.',
       'From start-ups navigating their first IT strategy to established enterprises pursuing digital transformation, we bring Fortune-500-level expertise with the personability of a dedicated local partner.',
     ],
-    cta: { label: 'Work With Us →', href: '#contact' },
+    cta: { label: 'Work With Us →', href: 'contact.html' },
     features: [
       { icon: '⚡', title: 'Fast Response Times',    body: 'We respond within hours, not days. Your business can\'t afford to wait — and neither can we.' },
       { icon: '🎯', title: 'Tailored Solutions',      body: 'No cookie-cutter packages. Every engagement is scoped around your unique business needs.'    },
@@ -77,7 +77,7 @@ const SITE = {
     eyebrow: 'What We Do',
     heading: 'Our Services &amp; Offerings',
     sub:     'Comprehensive IT consulting designed to align your technology with your business goals — from strategy to implementation and beyond.',
-    cta:     { label: 'Request a Proposal →', href: '#contact' },
+    cta:     { label: 'Request a Proposal →', href: 'contact.html' },
     items: [
       { icon: '📊', title: 'IT Strategy &amp; Consulting', body: 'Build a clear technology roadmap aligned with your goals — so every IT investment drives real competitive advantage.' },
       { icon: '🖥️', title: 'Managed IT Services',         body: 'Fully managed IT support, monitoring, and maintenance so your team stays productive and systems stay secure, 24/7.' },
@@ -140,7 +140,7 @@ const SITE = {
     eyebrow: 'Insights &amp; Expertise',
     heading: 'Latest from the Blog',
     sub:     'Thought leadership, practical guides, and industry insights from our team of IT professionals.',
-    cta:     { label: 'View All Articles →', href: '#blog' },
+    cta:     { label: 'View All Articles →', href: 'blog.html' },
     posts: [
       { tag: 'Cybersecurity', bg: '',                                        date: 'Mar 5, 2026',  read: '7 min read', title: 'Cybersecurity Tips Every Small Business Needs in 2026',         excerpt: 'Cyber threats are evolving faster than ever. Here are the foundational security practices every business should have in place right now.' },
       { tag: 'Cloud',         bg: 'background:linear-gradient(135deg,#1a1a2e,#16213e)', date: 'Feb 20, 2026', read: '9 min read', title: 'A Practical Cloud Migration Guide for Small Business Owners',      excerpt: 'Thinking about moving to the cloud? This step-by-step guide breaks down what to expect, what to avoid, and how to choose the right platform.' },
@@ -153,8 +153,8 @@ const SITE = {
     heading: 'Ready to <em>Transform</em> Your IT?',
     sub:     'Let\'s have a no-obligation conversation about your technology challenges. We typically respond within 1 business day.',
     ctas: [
-      { label: 'Book a Free Consultation →', href: '#contact',  style: 'btn-gold'    },
-      { label: 'View Services',              href: '#services', style: 'btn-outline'  },
+      { label: 'Book a Free Consultation →', href: 'contact.html',  style: 'btn-gold'    },
+      { label: 'View Services',              href: 'services.html', style: 'btn-outline'  },
     ],
   },
 
@@ -199,22 +199,22 @@ const SITE = {
       {
         heading: 'Services',
         links: [
-          { label: 'IT Strategy & Consulting', href: '#services' },
-          { label: 'Managed IT Services',      href: '#services' },
-          { label: 'Cybersecurity',            href: '#services' },
-          { label: 'Cloud Solutions',          href: '#services' },
-          { label: 'Digital Transformation',   href: '#services' },
-          { label: 'Custom Software Dev',      href: '#services' },
-          { label: 'Staff Augmentation',       href: '#services' },
+          { label: 'IT Strategy & Consulting', href: 'services.html' },
+          { label: 'Managed IT Services',      href: 'services.html' },
+          { label: 'Cybersecurity',            href: 'services.html' },
+          { label: 'Cloud Solutions',          href: 'services.html' },
+          { label: 'Digital Transformation',   href: 'services.html' },
+          { label: 'Custom Software Dev',      href: 'services.html' },
+          { label: 'Staff Augmentation',       href: 'services.html' },
         ],
       },
       {
         heading: 'Company',
         links: [
-          { label: 'About Us',        href: '#about'    },
-          { label: 'Services',        href: '#services' },
-          { label: 'Blog',            href: '#blog'     },
-          { label: 'Contact',         href: '#contact'  },
+          { label: 'About Us',        href: 'about.html'    },
+          { label: 'Services',        href: 'services.html' },
+          { label: 'Blog',            href: 'blog.html'     },
+          { label: 'Contact',         href: 'contact.html'  },
           { label: 'Careers',         href: '#'         },
           { label: 'Privacy Policy',  href: '#'         },
           { label: 'Terms of Service',href: '#'         },
@@ -225,7 +225,7 @@ const SITE = {
         links: [
           { label: 'hello@nexatechconsulting.com', href: '#'                },
           { label: '+1 (555) 123-4567',            href: 'tel:+15551234567' },
-          { label: 'Book a Consultation',          href: '#contact'         },
+          { label: 'Book a Consultation',          href: 'contact.html'         },
         ],
         subHeading: 'Offices',
         subLinks: [
