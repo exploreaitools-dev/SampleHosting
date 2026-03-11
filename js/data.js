@@ -7,8 +7,8 @@ const SITE = {
 
   /* ── Brand ── */
   brand: {
-    name:    'NexaTech',
-    suffix:  'Consulting',
+    name:    'CHIVAM',
+    suffix:  'SERVICES',
     sub:     'IT Consulting',
     email:   'hello@nexatechconsulting.com',
     phone:   '+1 (555) 123-4567',
@@ -229,10 +229,11 @@ const SITE = {
         ],
         subHeading: 'Offices',
         subLinks: [
-          { label: 'India',         href: '#' },
-          { label: 'United States', href: '#' },
-          { label: 'United Kingdom',href: '#' },
-          { label: 'Australia',     href: '#' },
+          { label: 'Visakhapatnam', href: '#' },
+          { label: 'Hyderabad',     href: '#' },
+          { label: 'Bangalore',     href: '#' },
+          { label: 'Pune',          href: '#' },
+          { label: 'Noida',         href: '#' },
         ],
       },
     ],
@@ -243,14 +244,40 @@ const SITE = {
     ],
   },
 
-  /* ── Ticker time zones ── */
+  /* ── Ticker rows (rotating) ── */
   ticker: [
-    { flag: '🇮🇳', name: 'India (IST)',      tz: 'Asia/Kolkata'       },
-    { flag: '🇬🇧', name: 'UK (GMT/BST)',      tz: 'Europe/London'      },
-    { flag: '🇺🇸', name: 'USA (ET)',          tz: 'America/New_York'   },
-    { flag: '🇨🇳', name: 'China (CST)',       tz: 'Asia/Shanghai'      },
-    { flag: '🇯🇵', name: 'Japan (JST)',       tz: 'Asia/Tokyo'         },
-    { flag: '🇦🇺', name: 'Australia (AEDT)', tz: 'Australia/Sydney'   },
+    {
+      label: '🏆 Achievements',
+      items: [
+        '🚀 120+ Projects Delivered',
+        '🌍 Clients in 8 Countries',
+        '💼 10+ Years in IT Consulting',
+        '⭐ 95% Client Retention',
+        '🔐 Security-First Solutions',
+      ],
+    },
+    {
+      label: '⚙️ Core Strengths',
+      items: [
+        'AI Solutions',
+        'Cloud Architecture',
+        'Kubernetes',
+        'DevOps',
+        'Microservices',
+        'Machine Learning',
+        'Data Engineering',
+      ],
+    },
+    {
+      label: '✅ Client Benefits',
+      items: [
+        '⚡ Faster Deployment',
+        '🔐 Enterprise Security',
+        '📈 Scalable Solutions',
+        '💰 Cost-Optimized Infrastructure',
+        '🤝 Dedicated Support',
+      ],
+    },
   ],
 
 };
