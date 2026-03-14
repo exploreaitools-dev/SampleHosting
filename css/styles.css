@@ -358,11 +358,32 @@ img { max-width: 100%; display: block; }
 /* ── CONTACT ── */
 .contact-bg   { background: var(--cream); }
 .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 44px; }
+.contact-info-heading { font-family: var(--fd); font-size: 22px; font-weight: 700; color: var(--black); margin-top: -12px; margin-bottom: 40px; text-align: center; }
 .contact-info h3 { font-family: var(--fd); font-size: 22px; font-weight: 700; color: var(--black); margin-bottom: 10px; }
 .contact-info p  { font-size: 13px; color: var(--body); line-height: 1.7; margin-bottom: 22px; }
+.contact-intro-bullets { list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 14px; }
+.contact-intro-bullets li { display: flex; align-items: center; gap: 14px; font-size: 13px; color: var(--body); line-height: 1.7; }
+.cib-icon {
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  width: 34px; height: 34px;
+  background: radial-gradient(circle at 50% 40%, rgba(255,224,80,0.28) 0%, rgba(212,175,55,0.10) 60%, transparent 100%);
+  border: 2.5px solid rgba(212,175,55,0.6);
+  border-radius: 14px;
+  box-shadow: 0 0 12px rgba(212,175,55,0.25), inset 0 1px 0 rgba(255,240,120,0.3);
+  position: relative;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.cib-icon:hover {
+  box-shadow: 0 0 22px rgba(212,175,55,0.55), 0 0 6px rgba(255,224,80,0.4), inset 0 1px 0 rgba(255,240,120,0.4);
+  transform: translateY(-2px) scale(1.06);
+}
+.cib-icon img { width: 22px; height: 22px; object-fit: contain; filter: drop-shadow(0 0 4px rgba(255,200,0,0.6)); }
 .cdet-list    { display: flex; flex-direction: column; gap: 10px; }
 .cdet         { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--body); }
 .cdet-ico     { width: 32px; height: 32px; background: rgba(212,175,55,0.09); border: 1px solid rgba(212,175,55,0.18); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+.cdet-body    { display: flex; flex-direction: column; gap: 2px; }
+.cdet-label   { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+.cdet-value   { font-size: 13px; font-weight: 500; color: var(--black); }
 .form-wrap    { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 26px; box-shadow: 0 4px 24px rgba(0,0,0,0.05); }
 .form-row     { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .fg           { margin-bottom: 10px; }
@@ -506,10 +527,11 @@ footer       { background: var(--black); border-top: 3px solid rgba(212,175,55,0
   0%   { opacity: 0; transform: translateX(-36px); }
   100% { opacity: 1; transform: translateX(0); }
 }
-.page-hero-text .page-eyebrow { animation: pageHeroSlideIn 0.6s ease both; animation-delay: 0.15s; }
-.page-hero-text h1             { animation: pageHeroSlideIn 0.7s ease both; animation-delay: 0.35s; }
-.page-hero-text p              { animation: pageHeroSlideIn 0.7s ease both; animation-delay: 0.55s; }
-.page-hero-text .breadcrumb    { animation: pageHeroSlideIn 0.7s ease both; animation-delay: 0.72s; }
+.page-hero-text .page-eyebrow  { animation: pageHeroSlideIn 0.6s ease both; animation-delay: 0.15s; }
+.page-hero-text .page-hero-lead{ animation: pageHeroSlideIn 0.6s ease both; animation-delay: 0.28s; }
+.page-hero-text h1             { animation: pageHeroSlideIn 0.7s ease both; animation-delay: 0.42s; }
+.page-hero-text p              { animation: pageHeroSlideIn 0.7s ease both; animation-delay: 0.58s; }
+.page-hero-text .breadcrumb    { animation: pageHeroSlideIn 0.7s ease both; animation-delay: 0.75s; }
 .page-eyebrow {
   display: inline-block;
   font-size: 13px; font-weight: 700; letter-spacing: 0.18em;
@@ -518,6 +540,12 @@ footer       { background: var(--black); border-top: 3px solid rgba(212,175,55,0
   padding: 5px 14px; border-radius: 20px;
   background: rgba(212,175,55,0.06);
   margin-bottom: 16px;
+}
+.page-hero-lead,
+.page-hero-inner p.page-hero-lead {
+  font-size: 22px; font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  margin-top: 0; margin-bottom: 16px; letter-spacing: 0.02em;
 }
 .page-hero-inner h1 {
   font-family: var(--fd);
