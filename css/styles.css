@@ -361,7 +361,7 @@ img { max-width: 100%; display: block; }
 .contact-info-heading { font-family: var(--fd); font-size: 22px; font-weight: 700; color: var(--black); margin-top: -12px; margin-bottom: 40px; text-align: center; }
 .contact-info h3 { font-family: var(--fd); font-size: 22px; font-weight: 700; color: var(--black); margin-bottom: 10px; }
 .contact-info p  { font-size: 13px; color: var(--body); line-height: 1.7; margin-bottom: 22px; }
-.contact-intro-bullets { list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 14px; }
+.contact-intro-bullets { list-style: none; padding: 0; margin: 16px 0 24px 0; display: flex; flex-direction: column; gap: 14px; }
 .contact-intro-bullets li { display: flex; align-items: center; gap: 14px; font-size: 13px; color: var(--body); line-height: 1.7; }
 .cib-icon {
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
@@ -675,7 +675,8 @@ footer       { background: var(--black); border-top: 3px solid rgba(212,175,55,0
 }
 
 /* ── FAQ (contact page) ── */
-.faq-bg { background: var(--lgray); }
+.faq-bg { background: var(--lgray); padding-top: 24px; }
+.faq-bg .sec-eye { font-size: 17px; letter-spacing: 0.12em; color: var(--black); margin-bottom: 24px; }
 .faq-grid {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
   margin-top: 8px;
@@ -712,10 +713,10 @@ footer       { background: var(--black); border-top: 3px solid rgba(212,175,55,0
   transition: border-color .2s, box-shadow .2s;
 }
 .office-card:hover { border-color: rgba(212,175,55,0.35); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
-/* HQ card highlight */
+/* HQ card — same styling as regular office cards */
 .office-card-hq {
-  border-color: rgba(212,175,55,0.4);
-  background: rgba(212,175,55,0.05);
+  border-color: var(--border);
+  background: var(--parch);
 }
 /* Initials badge (replaces flag) */
 .office-initials {
@@ -726,12 +727,12 @@ footer       { background: var(--black); border-top: 3px solid rgba(212,175,55,0
   color: var(--gold); font-family: var(--fb);
 }
 .office-card-hq .office-initials {
-  background: var(--gold); color: var(--black);
+  background: var(--black); color: var(--gold);
 }
 .office-name   { font-size: 12px; font-weight: 700; color: var(--black); }
 .office-status { font-size: 10px; color: var(--muted); margin-top: 1px; }
 /* HQ badge text */
-.office-hq-badge { color: var(--gold); font-weight: 700; }
+.office-hq-badge { color: var(--muted); font-weight: 400; }
 
 /* ── wht-eye helper ── */
 .wht-eye { color: rgba(255,255,255,0.55) !important; border-color: rgba(255,255,255,0.15) !important; background: rgba(255,255,255,0.04) !important; }

@@ -65,10 +65,10 @@ const SITE = {
     ],
     cta: { label: 'Work With Us →', href: 'contact.html' },
     features: [
-      { icon: '⚡', title: 'Fast Response Times',    body: 'We respond within hours, not days. Your business can\'t afford to wait — and neither can we.' },
-      { icon: '🎯', title: 'Tailored Solutions',      body: 'No cookie-cutter packages. Every engagement is scoped around your unique business needs.'    },
-      { icon: '🛡️', title: 'Proven Track Record',    body: '200+ successful engagements across industries — with measurable outcomes and long-term relationships.' },
-      { icon: '🌐', title: 'Global Reach, Local Focus', body: 'Operating across India, US, UK, and beyond — international expertise with dedicated local support.' },
+      { icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><bolt/><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>', title: 'Fast Response Times',    body: 'We respond within hours, not days. Your business can\'t afford to wait — and neither can we.' },
+      { icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>', title: 'Tailored Solutions',      body: 'No cookie-cutter packages. Every engagement is scoped around your unique business needs.'    },
+      { icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>', title: 'Proven Track Record',    body: '200+ successful engagements across industries — with measurable outcomes and long-term relationships.' },
+      { icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>', title: 'Global Reach, Local Focus', body: 'Operating across India, US, UK, and beyond — international expertise with dedicated local support.' },
     ],
   },
 
@@ -79,15 +79,15 @@ const SITE = {
     sub:     'Comprehensive IT consulting designed to align your technology with your business goals — from strategy to implementation and beyond.',
     cta:     { label: 'Request a Proposal →', href: 'contact.html' },
     items: [
-      { icon: '📊', title: 'IT Strategy &amp; Consulting', body: 'Build a clear technology roadmap aligned with your goals — so every IT investment drives real competitive advantage.' },
-      { icon: '🖥️', title: 'Managed IT Services',         body: 'Fully managed IT support, monitoring, and maintenance so your team stays productive and systems stay secure, 24/7.' },
-      { icon: '🔒', title: 'Cybersecurity',               body: 'End-to-end security assessments, compliance frameworks, and incident response planning to protect your business.' },
-      { icon: '☁️', title: 'Cloud Solutions',             body: 'Seamless cloud migration, architecture design, and ongoing management across AWS, Azure, and Google Cloud.' },
-      { icon: '🔄', title: 'Digital Transformation',      body: 'Reimagine your business with automation, AI, and modern platforms — accelerating efficiency and new revenue.' },
-      { icon: '💻', title: 'Custom Software Dev',         body: 'Bespoke web apps, mobile solutions, and enterprise software built with clean architecture and long-term maintainability.' },
-      { icon: '🏗️', title: 'IT Infrastructure',          body: 'Design, deployment, and management of your IT infrastructure — from network architecture to helpdesk support.' },
-      { icon: '👥', title: 'Staff Augmentation',          body: 'Scale your technical team on demand with vetted developers, engineers, and IT specialists on any basis.' },
-      { icon: '🎓', title: 'IT Training &amp; Placement', body: 'Upskill your workforce with structured training programmes and access our talent placement network.' },
+      { icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>', title: 'IT Strategy &amp; Consulting', body: 'Build a clear technology roadmap aligned with your goals — so every IT investment drives real competitive advantage.' },
+      { icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>', title: 'Managed IT Services',         body: 'Fully managed IT support, monitoring, and maintenance so your team stays productive and systems stay secure, 24/7.' },
+      { icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>', title: 'Cybersecurity',               body: 'End-to-end security assessments, compliance frameworks, and incident response planning to protect your business.' },
+      { icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>', title: 'Cloud Solutions',             body: 'Seamless cloud migration, architecture design, and ongoing management across AWS, Azure, and Google Cloud.' },
+      { icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>', title: 'Digital Transformation',      body: 'Reimagine your business with automation, AI, and modern platforms — accelerating efficiency and new revenue.' },
+      { icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>', title: 'Custom Software Dev',         body: 'Bespoke web apps, mobile solutions, and enterprise software built with clean architecture and long-term maintainability.' },
+      { icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>', title: 'IT Infrastructure',          body: 'Design, deployment, and management of your IT infrastructure — from network architecture to helpdesk support.' },
+      { icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', title: 'Staff Augmentation',          body: 'Scale your technical team on demand with vetted developers, engineers, and IT specialists on any basis.' },
+      { icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>', title: 'IT Training &amp; Placement', body: 'Upskill your workforce with structured training programmes and access our talent placement network.' },
     ],
   },
 
@@ -168,8 +168,7 @@ const SITE = {
     details: [
       { icon: '📧', text: 'hello@nexatechconsulting.com' },
       { icon: '📞', text: '+1 (555) 123-4567'            },
-      { icon: '⏱️', text: 'Response within 1 business day' },
-      { icon: '🌐', text: 'Serving clients globally across 6 countries' },
+      { icon: '🕐', text: 'Mon – Fri  |  10 AM – 6 PM IST' },
     ],
     serviceOptions: [
       'IT Strategy & Consulting',
@@ -233,7 +232,7 @@ const SITE = {
           { label: 'Hyderabad',     href: '#' },
           { label: 'Bangalore',     href: '#' },
           { label: 'Pune',          href: '#' },
-          { label: 'Noida',         href: '#' },
+
         ],
       },
     ],
